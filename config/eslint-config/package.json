@@ -9,8 +9,8 @@
     "./node": "./node.js"
   },
   "devDependencies": {
+    "@rocket-saas/prettier": "workspace:*",
     "@rocketseat/eslint-config": "^2.2.2",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "@rocket-saas/prettier": "workspace:*"
+    "eslint-plugin-simple-import-sort": "^12.1.1"
   }
 }

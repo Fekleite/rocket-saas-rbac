@@ -1,0 +1,23 @@
+{
+  "name": "@rocket-saas/api",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@rocket-saas/auth": "workspace:*"
+  },
+  "devDependencies": {
+    "@rocket-saas/eslint-config": "workspace:*",
+    "@rocket-saas/prettier": "workspace:*",
+    "@rocket-saas/ts-config": "workspace:*",
+    "@types/node": "^22.13.1",
+    "tsx": "^4.19.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@rocket-saas/eslint-config/node"
+    ]
+  },
+  "prettier": "@rocket-saas/prettier"
+}

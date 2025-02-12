@@ -1,0 +1,6 @@
+{
+  "extends": "@rocket-saas/ts-config/node",
+  "include": [
+    "src/**/*"
+  ]
+}

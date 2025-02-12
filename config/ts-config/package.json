@@ -4,6 +4,7 @@
   "private": true,
   "license": "MIT",
   "exports": {
-    "./library": "./library.json"
+    "./library": "./library.json",
+    "./node": "./node.json"
   }
 }

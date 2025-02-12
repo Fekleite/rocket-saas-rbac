@@ -1,0 +1,6 @@
+{
+  "extends": "@rocket-saas/ts-config/library",
+  "include": [
+    "src/**/*"
+  ]
+}

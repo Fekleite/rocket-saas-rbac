@@ -1,12 +1,15 @@
 {
   "name": "@rocket-saas/auth",
   "version": "0.0.0",
-  "main": "index.ts",
-  "types": "index.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "private": true,
+  "dependencies": {
+    "@casl/ability": "^6.7.3"
+  },
   "devDependencies": {
-    "@rocket-saas/prettier": "workspace:*",
     "@rocket-saas/eslint-config": "workspace:*",
+    "@rocket-saas/prettier": "workspace:*",
     "@rocket-saas/ts-config": "workspace:*"
   },
   "eslintConfig": {

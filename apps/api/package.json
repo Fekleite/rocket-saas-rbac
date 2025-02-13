@@ -16,6 +16,7 @@
     "@rocket-saas/prettier": "workspace:*",
     "@rocket-saas/ts-config": "workspace:*",
     "@types/node": "^22.13.1",
+    "prisma": "^6.3.1",
     "tsx": "^4.19.2"
   },
   "eslintConfig": {

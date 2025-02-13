@@ -2,10 +2,14 @@
   "name": "@rocket-saas/api",
   "version": "0.0.0",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/http/server.ts"
   },
   "dependencies": {
-    "@rocket-saas/auth": "workspace:*"
+    "@fastify/cors": "^10.0.2",
+    "@rocket-saas/auth": "workspace:*",
+    "fastify": "^5.2.1",
+    "fastify-type-provider-zod": "^4.0.2",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@rocket-saas/eslint-config": "workspace:*",

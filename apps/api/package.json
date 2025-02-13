@@ -8,6 +8,7 @@
     "@fastify/cors": "^10.0.2",
     "@prisma/client": "6.3.1",
     "@rocket-saas/auth": "workspace:*",
+    "bcryptjs": "^3.0.0",
     "fastify": "^5.2.1",
     "fastify-type-provider-zod": "^4.0.2",
     "zod": "^3.24.2"
@@ -16,6 +17,7 @@
     "@rocket-saas/eslint-config": "workspace:*",
     "@rocket-saas/prettier": "workspace:*",
     "@rocket-saas/ts-config": "workspace:*",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.13.1",
     "prisma": "^6.3.1",
     "tsx": "^4.19.2"

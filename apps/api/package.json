@@ -2,7 +2,8 @@
   "name": "@rocket-saas/api",
   "version": "0.0.0",
   "scripts": {
-    "dev": "tsx watch src/http/server.ts"
+    "dev": "tsx watch src/http/server.ts",
+    "db:seed": "prisma db seed"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",
@@ -14,6 +15,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.5.0",
     "@rocket-saas/eslint-config": "workspace:*",
     "@rocket-saas/prettier": "workspace:*",
     "@rocket-saas/ts-config": "workspace:*",
@@ -27,5 +29,8 @@
       "@rocket-saas/eslint-config/node"
     ]
   },
-  "prettier": "@rocket-saas/prettier"
+  "prettier": "@rocket-saas/prettier",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  }
 }

@@ -3,6 +3,7 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { z } from 'zod';
 
 import { prisma } from '@/lib/prisma';
+import { NotFoundError } from '../_errors/not-found-error';
 
 export async function getProfile(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
@@ -17,9 +18,6 @@ export async function getProfile(app: FastifyInstance) {
             name: z.string().nullable(),
             email: z.string(),
             avatarUrl: z.string().nullable(),
-          }),
-          404: z.object({
-            message: z.string(),
           }),
         },
       },
@@ -40,7 +38,7 @@ export async function getProfile(app: FastifyInstance) {
       });
 
       if (!user) {
-        return reply.status(404).send({ message: 'User does not exists.' });
+        throw new NotFoundError('This user does not exists.');
       }
 
       return reply.status(200).send(user);

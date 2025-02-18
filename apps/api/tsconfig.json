@@ -1,7 +1,7 @@
 {
   "extends": "@rocket-saas/ts-config/node",
   "include": [
-    "src/**/*"
+    "src/**/*", "@types/*.d.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",

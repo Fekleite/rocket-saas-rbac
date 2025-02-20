@@ -1,3 +1,4 @@
+import { env } from '@rocket-saas/env';
 import fastifyCors from '@fastify/cors';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
@@ -33,7 +34,15 @@ app.register(fastifySwagger, {
       description: 'full-stack SaaS app with multi-tenant & RBAC.',
       version: '1.0.0',
     },
-    servers: [],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   transform: jsonSchemaTransform,
 });
@@ -43,7 +52,7 @@ app.register(fastifySwaggerUi, {
 
 app.register(fastifyCors);
 app.register(fastifyJwt, {
-  secret: process.env.JWT_SECRET!,
+  secret: env.JWT_SECRET,
 });
 
 app.register(createAccount);
@@ -53,6 +62,6 @@ app.register(requestPasswordRecover);
 app.register(resetPassword);
 app.register(authenticateWithGithub);
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running!');
 });

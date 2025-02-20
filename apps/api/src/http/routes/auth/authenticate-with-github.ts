@@ -1,7 +1,10 @@
+import { env } from '@rocket-saas/env';
 import type { FastifyInstance } from 'fastify';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { z } from 'zod';
+
 import { BadRequestError } from '../_errors/bad-request-error';
+
 import { prisma } from '@/lib/prisma';
 
 export async function authenticateWithGithub(app: FastifyInstance) {
@@ -24,18 +27,12 @@ export async function authenticateWithGithub(app: FastifyInstance) {
         'https://github.com/login/oauth/access_token'
       );
 
-      githubOAuthURL.searchParams.set(
-        'client_id',
-        process.env.GITHUB_CLIENT_ID!
-      );
+      githubOAuthURL.searchParams.set('client_id', env.GITHUB_CLIENT_ID);
       githubOAuthURL.searchParams.set(
         'client_secret',
-        process.env.GITHUB_CLIENT_SECRET!
+        env.GITHUB_CLIENT_SECRET
       );
-      githubOAuthURL.searchParams.set(
-        'redirect_uri',
-        process.env.GITHUB_REDIRECT_URI!
-      );
+      githubOAuthURL.searchParams.set('redirect_uri', env.GITHUB_REDIRECT_URI);
       githubOAuthURL.searchParams.set('code', code);
 
       const githubAccessTokenResponse = await fetch(githubOAuthURL, {

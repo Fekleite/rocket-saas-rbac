@@ -1,0 +1,23 @@
+{
+  "name": "@rocket-saas/env",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true,
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@rocket-saas/eslint-config": "workspace:*",
+    "@rocket-saas/prettier": "workspace:*",
+    "@rocket-saas/ts-config": "workspace:*",
+    "@types/node": "^22.13.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@rocket-saas/eslint-config/library"
+    ]
+  },
+  "prettier": "@rocket-saas/prettier"
+}

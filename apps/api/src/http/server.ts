@@ -11,14 +11,15 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod';
 
+import { errorHandler } from './error-handler';
+
 import { createAccount } from './routes/auth/create-account';
 import { authenticateWithPassword } from './routes/auth/authenticate-with-password';
 import { getProfile } from './routes/auth/get-profile';
 import { requestPasswordRecover } from './routes/auth/request-password-recover';
 import { resetPassword } from './routes/auth/reset-password';
 import { authenticateWithGithub } from './routes/auth/authenticate-with-github';
-
-import { errorHandler } from './error-handler';
+import { createOrganization } from './routes/orgs/create-organization';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -61,6 +62,8 @@ app.register(getProfile);
 app.register(requestPasswordRecover);
 app.register(resetPassword);
 app.register(authenticateWithGithub);
+
+app.register(createOrganization);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running!');

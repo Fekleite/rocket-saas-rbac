@@ -24,6 +24,7 @@ import { getMembership } from './routes/orgs/get-membership';
 import { getOrganization } from './routes/orgs/get-organization';
 import { getOrganizations } from './routes/orgs/get-organizations';
 import { updateOrganization } from './routes/orgs/update-organization';
+import { shutdownOrganization } from './routes/orgs/shutdown-organization';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -60,6 +61,7 @@ app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
 });
 
+// Auth
 app.register(createAccount);
 app.register(authenticateWithPassword);
 app.register(getProfile);
@@ -67,11 +69,13 @@ app.register(requestPasswordRecover);
 app.register(resetPassword);
 app.register(authenticateWithGithub);
 
+// Organization
 app.register(createOrganization);
 app.register(getMembership);
 app.register(getOrganization);
 app.register(getOrganizations);
 app.register(updateOrganization);
+app.register(shutdownOrganization);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running!');

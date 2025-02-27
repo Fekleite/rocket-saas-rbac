@@ -27,6 +27,7 @@ import { updateOrganization } from './routes/orgs/update-organization';
 import { shutdownOrganization } from './routes/orgs/shutdown-organization';
 import { transferOrganization } from './routes/orgs/transfer-organization';
 import { createProject } from './routes/projects/create-project';
+import { deleteProject } from './routes/projects/delete-project';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -82,6 +83,7 @@ app.register(transferOrganization);
 
 // Project
 app.register(createProject);
+app.register(deleteProject);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running!');

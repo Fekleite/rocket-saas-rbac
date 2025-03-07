@@ -68,19 +68,24 @@ export async function getOrganizationBilling(app: FastifyInstance) {
           }),
         ]);
 
+        const SEAT_UNIT_VALUE = 10;
+        const PROJECT_UNIT_VALUE = 20;
+
         return reply.status(200).send({
           billing: {
             seats: {
               amount: amountOfMembers,
-              unit: 10,
-              price: amountOfMembers * 10,
+              unit: SEAT_UNIT_VALUE,
+              price: amountOfMembers * SEAT_UNIT_VALUE,
             },
             projects: {
               amount: amountOfProjects,
-              unit: 20,
-              price: amountOfProjects * 20,
+              unit: PROJECT_UNIT_VALUE,
+              price: amountOfProjects * PROJECT_UNIT_VALUE,
             },
-            total: amountOfMembers * 10 + amountOfProjects * 20,
+            total:
+              amountOfMembers * SEAT_UNIT_VALUE +
+              amountOfProjects * PROJECT_UNIT_VALUE,
           },
         });
       }

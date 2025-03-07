@@ -1,4 +1,4 @@
-import { organizationSchema, projectSchema } from '@rocket-saas/auth';
+import { projectSchema } from '@rocket-saas/auth';
 import type { FastifyInstance } from 'fastify';
 import type { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { z } from 'zod';

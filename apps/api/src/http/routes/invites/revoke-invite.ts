@@ -46,7 +46,6 @@ export async function revokeInvite(app: FastifyInstance) {
           where: {
             id: inviteId,
           },
-          include: {},
         });
 
         if (!invite) {

@@ -33,11 +33,11 @@ export async function getOrganization(app: FastifyInstance) {
           },
         },
       },
-      async (request) => {
+      async (request, reply) => {
         const { slug } = request.params;
         const { organization } = await request.getUserMembership(slug);
 
-        return organization;
+        return reply.status(200).send(organization);
       }
     );
 }

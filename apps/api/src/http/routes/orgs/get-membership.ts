@@ -29,11 +29,11 @@ export async function getMembership(app: FastifyInstance) {
           },
         },
       },
-      async (request) => {
+      async (request, reply) => {
         const { slug } = request.params;
         const { membership } = await request.getUserMembership(slug);
 
-        return membership;
+        return reply.status(200).send(membership);
       }
     );
 }

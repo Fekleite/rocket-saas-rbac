@@ -42,7 +42,7 @@ export async function getProjects(app: FastifyInstance) {
           },
         },
       },
-      async (request) => {
+      async (request, reply) => {
         const { slug } = request.params;
         const { organization, membership } =
           await request.getUserMembership(slug);
@@ -83,7 +83,7 @@ export async function getProjects(app: FastifyInstance) {
           },
         });
 
-        return projects;
+        return reply.status(200).send(projects);
       }
     );
 }

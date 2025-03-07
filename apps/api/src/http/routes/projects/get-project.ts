@@ -42,7 +42,7 @@ export async function getProject(app: FastifyInstance) {
           },
         },
       },
-      async (request) => {
+      async (request, reply) => {
         const { orgSlug, projectSlug } = request.params;
         const { organization, membership } =
           await request.getUserMembership(orgSlug);
@@ -84,7 +84,7 @@ export async function getProject(app: FastifyInstance) {
           throw new BadRequestError('Project not found.');
         }
 
-        return project;
+        return reply.status(200).send(project);
       }
     );
 }

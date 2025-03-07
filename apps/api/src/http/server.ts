@@ -41,6 +41,7 @@ import { acceptInvite } from './routes/invites/accept-invite';
 import { rejectInvite } from './routes/invites/reject-invite';
 import { revokeInvite } from './routes/invites/revoke-invite';
 import { getPendingInvites } from './routes/invites/get-pending-invites';
+import { getOrganizationBilling } from './routes/billing/get-organization-billing';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -114,6 +115,9 @@ app.register(acceptInvite);
 app.register(rejectInvite);
 app.register(revokeInvite);
 app.register(getPendingInvites);
+
+// Billing
+app.register(getOrganizationBilling);
 
 app.listen({ port: env.PORT }).then(() => {
   console.log('HTTP server running!');

@@ -1,6 +1,4 @@
-interface GithubIconProps extends React.ComponentProps<'svg'> {}
-
-export function GithubIcon({ ...props }: GithubIconProps) {
+export function GithubIcon({ ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
       aria-hidden="true"

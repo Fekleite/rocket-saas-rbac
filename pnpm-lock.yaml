@@ -120,6 +120,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.0.12)
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
     devDependencies:
       '@rocket-saas/eslint-config':
         specifier: workspace:*

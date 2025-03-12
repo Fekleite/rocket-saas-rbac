@@ -7,9 +7,11 @@ import { Label } from '@/components/ui/label';
 
 import { GithubIcon } from '@/components/icons/github-icon';
 
+import { signInWithEmailAndPassword } from './actions';
+
 export default function SignIn() {
   return (
-    <form action="" className="space-y-4">
+    <form action={signInWithEmailAndPassword} className="space-y-4">
       <div className="space-y-1">
         <Label htmlFor="email">E-mail</Label>
         <Input name="email" type="email" id="email" />

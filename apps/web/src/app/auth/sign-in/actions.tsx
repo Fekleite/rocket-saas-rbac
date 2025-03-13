@@ -1,9 +1,11 @@
 'use server';
 
 import { z } from 'zod';
+import { HTTPError } from 'ky';
+import { cookies as nextCookies } from 'next/headers';
 
 import { signInWithPassword } from '@/http/auth/sign-in-with-password';
-import { HTTPError } from 'ky';
+import { redirect } from 'next/navigation';
 
 const signInSchema = z.object({
   email: z
@@ -24,11 +26,17 @@ export async function signInWithEmailAndPassword(formData: FormData) {
   const { email, password } = result.data;
 
   try {
-    await signInWithPassword({
+    const { token } = await signInWithPassword({
       body: {
         email,
         password,
       },
+    });
+
+    const cookies = await nextCookies();
+    cookies.set('token', token, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
     });
   } catch (error) {
     if (error instanceof HTTPError) {
@@ -46,5 +54,5 @@ export async function signInWithEmailAndPassword(formData: FormData) {
     };
   }
 
-  return { success: true, message: null, errors: null };
+  redirect('/');
 }

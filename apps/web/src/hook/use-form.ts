@@ -8,6 +8,7 @@ interface FormState {
 
 export function useForm(
   action: (data: FormData) => Promise<FormState>,
+  onSuccess?: () => Promise<void> | void,
   initialState?: FormState
 ) {
   const [isPending, startTransition] = useTransition();
@@ -27,6 +28,10 @@ export function useForm(
 
     startTransition(async () => {
       const response = await action(data);
+
+      if (response.success && onSuccess) {
+        await onSuccess();
+      }
 
       setFormState(response);
     });

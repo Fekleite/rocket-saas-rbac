@@ -5,7 +5,6 @@ import { HTTPError } from 'ky';
 import { cookies as nextCookies } from 'next/headers';
 
 import { signInWithPassword } from '@/http/auth/sign-in-with-password';
-import { redirect } from 'next/navigation';
 
 const signInSchema = z.object({
   email: z
@@ -54,5 +53,5 @@ export async function signInWithEmailAndPassword(formData: FormData) {
     };
   }
 
-  redirect('/');
+  return { success: true, message: null, errors: null };
 }

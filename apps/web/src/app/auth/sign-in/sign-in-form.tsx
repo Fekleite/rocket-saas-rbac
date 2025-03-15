@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { AlertTriangle, Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,8 +18,13 @@ import { signInWithEmailAndPassword } from './actions';
 import { signInWithGithub } from '../actions';
 
 export function SignInForm() {
+  const router = useRouter();
+
   const [{ success, errors, message }, handleSubmit, isPending] = useForm(
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    () => {
+      router.push('/');
+    }
   );
 
   return (

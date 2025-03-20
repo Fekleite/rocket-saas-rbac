@@ -133,6 +133,9 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
+      '@rocket-saas/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       '@rocket-saas/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config

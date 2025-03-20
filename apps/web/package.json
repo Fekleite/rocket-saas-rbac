@@ -30,6 +30,7 @@
     "@rocket-saas/eslint-config": "workspace:*",
     "@rocket-saas/prettier": "workspace:*",
     "@rocket-saas/ts-config": "workspace:*",
+    "@rocket-saas/auth": "workspace:*",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

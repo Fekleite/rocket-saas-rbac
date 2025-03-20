@@ -1,6 +1,5 @@
 import { ChevronsUpDown, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
-import { cookies as nextCookies } from 'next/headers';
 
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import {
@@ -14,12 +13,12 @@ import {
 } from './ui/dropdown-menu';
 
 import { getOrganizations } from '@/http/organizations/get-organizations';
+import { getCurrentOrg } from '@/auth/auth';
 
 export async function OrganizationSwitcher() {
   const organizations = await getOrganizations();
 
-  const cookies = await nextCookies();
-  const currentOrgSlug = cookies.get('org')?.value;
+  const currentOrgSlug = await getCurrentOrg();
   const currentOrganization = organizations.find(
     (org) => org.slug === currentOrgSlug
   );

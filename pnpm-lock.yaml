@@ -99,6 +99,12 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.2
         version: 1.1.2(@types/react@19.0.10)(react@19.0.0)
+      '@rocket-saas/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@rocket-saas/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -108,6 +114,9 @@ importers:
       cookies-next:
         specifier: ^5.1.0
         version: 5.1.0(next@15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      dotenv-cli:
+        specifier: ^8.0.0
+        version: 8.0.0
       ky:
         specifier: ^1.7.5
         version: 1.7.5
@@ -136,9 +145,6 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
-      '@rocket-saas/auth':
-        specifier: workspace:*
-        version: link:../../packages/auth
       '@rocket-saas/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config

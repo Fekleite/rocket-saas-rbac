@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { isAuthenticated } from '@/auth/auth';
 
+import { Header } from '@/components/header';
+
 export default async function AppLayout({
   children,
 }: Readonly<{
@@ -13,5 +15,10 @@ export default async function AppLayout({
     redirect('/auth/sign-in');
   }
 
-  return <>{children}</>;
+  return (
+    <div>
+      <Header />
+      <main className="mx-auto max-w-[1280px] px-4">{children}</main>
+    </div>
+  );
 }

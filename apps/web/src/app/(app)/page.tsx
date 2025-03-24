@@ -1,10 +1,3 @@
-import { Header } from '@/components/header';
-
 export default function Home() {
-  return (
-    <div>
-      <Header />
-      <main></main>
-    </div>
-  );
+  return <h1>Projects</h1>;
 }

@@ -7,7 +7,7 @@ export default function CreateOrganization() {
     <div className="space-y-4">
       <Header />
 
-      <main className="mx-auto max-w-[1280px] px-4">
+      <main className="mx-auto max-w-[1280px] space-y-4 px-4">
         <h1 className="text-2xl font-bold">Create organization</h1>
 
         <CreateOrgForm />

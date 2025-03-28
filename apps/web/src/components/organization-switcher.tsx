@@ -28,12 +28,14 @@ export async function OrganizationSwitcher() {
       <DropdownMenuTrigger className="focus-visible:ring-primary flex w-[168px] items-center gap-2 rounded p-1 text-sm font-medium outline-none focus-visible:ring-2">
         {currentOrganization ? (
           <>
-            <Avatar className="mr-2 size-4">
+            <Avatar className="size-4 shrink-0">
               {currentOrganization.avatarUrl && (
                 <AvatarImage src={currentOrganization.avatarUrl} />
               )}
+
               <AvatarFallback />
             </Avatar>
+
             <span className="truncate text-left">
               {currentOrganization.name}
             </span>
@@ -42,7 +44,7 @@ export async function OrganizationSwitcher() {
           <span className="text-muted-foreground">Select organization</span>
         )}
 
-        <ChevronsUpDown className="text-muted-foreground ml-auto size-4" />
+        <ChevronsUpDown className="text-muted-foreground ml-auto size-4 shrink-0" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
@@ -58,7 +60,7 @@ export async function OrganizationSwitcher() {
             return (
               <DropdownMenuItem key={org.id} asChild>
                 <Link href={`/org/${org.slug}`}>
-                  <Avatar className="mr-2 size-4">
+                  <Avatar className="size-4">
                     {org.avatarUrl && <AvatarImage src={org.avatarUrl} />}
                     <AvatarFallback />
                   </Avatar>

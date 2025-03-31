@@ -1,5 +1,3 @@
-import { Header } from '@/components/header';
-
 export default async function Organization({
   params,
 }: {
@@ -8,10 +6,8 @@ export default async function Organization({
   const { project } = await params;
 
   return (
-    <div>
-      <Header />
-
-      <main className="mx-auto max-w-[1280px] px-4">Project {project}</main>
+    <div className="space-y-4">
+      <h1>Project {project}</h1>
     </div>
   );
 }

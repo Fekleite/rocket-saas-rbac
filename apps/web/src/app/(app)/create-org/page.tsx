@@ -1,6 +1,6 @@
 import { Header } from '@/components/header';
 
-import { CreateOrgForm } from './create-org-form';
+import { OrganizationForm } from '../org/(form)/organization-form';
 
 export default function CreateOrganization() {
   return (
@@ -10,7 +10,7 @@ export default function CreateOrganization() {
       <main className="mx-auto max-w-[1280px] space-y-4 px-4">
         <h1 className="text-2xl font-bold">Create organization</h1>
 
-        <CreateOrgForm />
+        <OrganizationForm />
       </main>
     </div>
   );

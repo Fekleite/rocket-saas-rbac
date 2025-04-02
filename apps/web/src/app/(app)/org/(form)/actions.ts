@@ -4,8 +4,11 @@ import { z } from 'zod';
 import { HTTPError } from 'ky';
 
 import { createOrganization } from '@/http/organizations/create-organization';
+import { updateOrganization } from '@/http/organizations/update-organization';
 
-const createOrganizationSchema = z
+import { getCurrentOrg } from '@/auth/auth';
+
+const organizationFormSchema = z
   .object({
     name: z
       .string()
@@ -46,10 +49,10 @@ const createOrganizationSchema = z
     }
   );
 
+export type OrganizationSchema = z.infer<typeof organizationFormSchema>;
+
 export async function createOrganizationAction(formData: FormData) {
-  const result = createOrganizationSchema.safeParse(
-    Object.fromEntries(formData)
-  );
+  const result = organizationFormSchema.safeParse(Object.fromEntries(formData));
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors;
@@ -65,6 +68,53 @@ export async function createOrganizationAction(formData: FormData) {
         name,
         domain,
         shouldAttachUsersByDomain,
+      },
+    });
+  } catch (error) {
+    if (error instanceof HTTPError) {
+      const { message } = await error.response.json();
+
+      return { success: false, message, errors: null };
+    }
+
+    console.error(error);
+
+    return {
+      success: false,
+      message: 'Unexpected error. try again in a few minutes.',
+      errors: null,
+    };
+  }
+
+  return {
+    success: true,
+    message: 'Successfully saved the organization.',
+    errors: null,
+  };
+}
+
+export async function updateOrganizationAction(formData: FormData) {
+  const result = organizationFormSchema.safeParse(Object.fromEntries(formData));
+
+  if (!result.success) {
+    const errors = result.error.flatten().fieldErrors;
+
+    return { success: false, message: null, errors };
+  }
+
+  const { name, domain, shouldAttachUsersByDomain } = result.data;
+
+  const org = await getCurrentOrg();
+
+  try {
+    await updateOrganization({
+      body: {
+        name,
+        domain,
+        shouldAttachUsersByDomain,
+      },
+      params: {
+        org: org!,
       },
     });
   } catch (error) {

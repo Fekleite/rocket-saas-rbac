@@ -1,7 +1,7 @@
 import { Sheet, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { InterceptedSheetContent } from '@/components/intercepted-sheet-content';
 
-import { CreateOrgForm } from '../../create-org/create-org-form';
+import { OrganizationForm } from '../../org/(form)/organization-form';
 
 export default function CreateOrganization() {
   return (
@@ -12,7 +12,7 @@ export default function CreateOrganization() {
         </SheetHeader>
 
         <div className="px-4">
-          <CreateOrgForm />
+          <OrganizationForm />
         </div>
       </InterceptedSheetContent>
     </Sheet>

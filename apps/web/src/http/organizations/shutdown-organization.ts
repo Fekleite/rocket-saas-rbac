@@ -1,9 +1,11 @@
 import { api } from '@/http/api-client';
 
-interface GetMembershipParams {
+interface ShutdownOrganizationParams {
   org: string;
 }
 
-export async function shutdownOrganization({ org }: GetMembershipParams) {
+export async function shutdownOrganization({
+  org,
+}: ShutdownOrganizationParams) {
   await api.delete(`organizations/${org}`);
 }

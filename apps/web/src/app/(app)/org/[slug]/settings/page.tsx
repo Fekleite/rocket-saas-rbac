@@ -9,8 +9,10 @@ import {
 } from '@/components/ui/card';
 import { ShutdownOrganizationButton } from '@/components/shutdown-org-button';
 
-import { OrganizationForm } from '../../(form)/organization-form';
 import { getOrganization } from '@/http/organizations/get-organization';
+
+import { OrganizationForm } from '../../(form)/organization-form';
+import { BillingTable } from './billing-table';
 
 export default async function Settings() {
   const permissions = await ability();
@@ -53,9 +55,13 @@ export default async function Settings() {
           <Card>
             <CardHeader>
               <CardTitle>Billing</CardTitle>
-              <CardDescription>Your billing details</CardDescription>
+              <CardDescription>
+                Information about your organizations costs
+              </CardDescription>
             </CardHeader>
-            <CardContent></CardContent>
+            <CardContent>
+              <BillingTable />
+            </CardContent>
           </Card>
         )}
 

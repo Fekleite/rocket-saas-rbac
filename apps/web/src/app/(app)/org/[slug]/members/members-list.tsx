@@ -11,8 +11,9 @@ import { getMembers } from '@/http/members/get-members';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { UpdateMemberRoleSelect } from '@/components/update-member-role-select';
 
-import { removeMemberAction } from './actions';
+import { removeMemberAction, updateMemberAction } from './actions';
 
 export async function MemberList() {
   const currentOrg = await getCurrentOrg();
@@ -83,6 +84,20 @@ export async function MemberList() {
                           Transfer ownership
                         </Button>
                       )}
+
+                      <UpdateMemberRoleSelect
+                        memberId={member.id}
+                        value={member.role}
+                        disabled={
+                          member.userId === membership.userId ||
+                          member.userId === organization.ownerId ||
+                          permissions?.cannot('update', 'User')
+                        }
+                        updateMemberRole={updateMemberAction.bind(
+                          null,
+                          member.id
+                        )}
+                      />
 
                       {permissions?.can('delete', 'User') && (
                         <form action={removeMemberAction.bind(null, member.id)}>

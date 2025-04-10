@@ -1,7 +1,7 @@
 import { Role } from '@rocket-saas/auth';
 import { api } from '../api-client';
 
-interface GetMembersParams {
+interface GetInvitesParams {
   org: string;
 }
 
@@ -18,7 +18,7 @@ interface Invite {
 
 type GetInvitesResponse = Invite[];
 
-export async function getInvites({ org }: GetMembersParams) {
+export async function getInvites({ org }: GetInvitesParams) {
   const result = await api
     .get<GetInvitesResponse>(`organizations/${org}/invites`)
     .json();

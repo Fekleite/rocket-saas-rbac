@@ -18,8 +18,12 @@ import { useForm } from '@/hook/use-form';
 import { createInviteAction } from './actions';
 
 export function CreateInviteForm() {
-  const [{ errors, message, success }, handleSubmit, isPending] =
-    useForm(createInviteAction);
+  const [{ errors, message, success }, handleSubmit, isPending] = useForm(
+    createInviteAction,
+    undefined,
+    undefined,
+    true
+  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

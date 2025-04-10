@@ -5,6 +5,7 @@ import { HTTPError } from 'ky';
 import { cookies as nextCookies } from 'next/headers';
 
 import { signInWithPassword } from '@/http/auth/sign-in-with-password';
+import { acceptInvite } from '@/http/invites/accept-invite';
 
 const signInSchema = z.object({
   email: z
@@ -37,6 +38,17 @@ export async function signInWithEmailAndPassword(formData: FormData) {
       path: '/',
       maxAge: 60 * 60 * 24 * 7, // 7 days
     });
+
+    const inviteId = cookies.get('inviteId')?.value;
+
+    if (inviteId) {
+      try {
+        await acceptInvite({ inviteId });
+        cookies.delete('inviteId');
+      } catch (e) {
+        console.log(e);
+      }
+    }
   } catch (error) {
     if (error instanceof HTTPError) {
       const { message } = await error.response.json();

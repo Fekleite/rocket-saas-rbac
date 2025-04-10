@@ -4,7 +4,7 @@ import { RevokeInviteButton } from '@/components/revoke-invite-button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
-import { getInvites } from '@/http/invites/get-invite';
+import { getInvites } from '@/http/invites/get-invites';
 
 import { revokeInviteAction } from './actions';
 import { CreateInviteForm } from './create-invite-form';

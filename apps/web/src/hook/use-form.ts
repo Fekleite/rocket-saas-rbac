@@ -36,7 +36,9 @@ export function useForm(
       }
 
       setFormState(response);
+    });
 
+    startTransition(() => {
       if (shouldResetForm) {
         requestFormReset(form);
       }
